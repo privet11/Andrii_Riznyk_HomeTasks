@@ -132,12 +132,10 @@
     <Compile Include="Assembly\MultipleAssert.cs" />
     <Compile Include="Assembly\PagesGet.cs" />
     <Compile Include="Assembly\ScoreBoard.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Pages\EntertainmentArtsPage.cs" />
     <Compile Include="Pages\SpecificNewsPage.cs" />
     <Compile Include="Tests\HomeTask1 tests\TeamScoresTest1.cs" />
     <Compile Include="Tests\HomeTask1 tests\LinkSharingTest.cs" />
-    <Compile Include="Tests\Searching tests\FirstSearchResultTest.cs" />
     <Compile Include="Pages\FootballMatchPage.cs" />
     <Compile Include="Pages\FootballPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
@@ -145,19 +143,12 @@
     <Compile Include="Pages\ScoresFixturesPage.cs" />
     <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="Pages\SportPage.cs" />
-    <Compile Include="Tests\Articles tests\TheHeadlineArticleTest.cs" />
-    <Compile Include="Tests\Articles tests\TheSecondaryArticlesTest.cs" />
-    <Compile Include="Tests\Sport tests\TeamScoresTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Tests\HomeTask1 tests\HomeTask1.feature" />
-    <None Include="Tests\Searching tests\FirstSearchResult.feature" />
-    <None Include="Tests\Articles tests\TheHeadlineArticle.feature" />
-    <None Include="Tests\Articles tests\TheSecondaryArticles.feature" />
-    <None Include="Tests\Sport tests\TeamScores.feature" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
