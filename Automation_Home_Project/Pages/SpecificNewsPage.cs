@@ -21,9 +21,14 @@ namespace Automation_Home_Project.PageObject
             shareButton.Click(); 
         }
         public string Article() => article.Text;
-        public string ShareLink() => shareLink.Text;
-
-
+        public string ShareLink() 
+        {
+            while (shareLink.Text == string.Empty)
+            {
+                shareButton.Click();
+            }
+            return shareLink.Text; 
+        }
 
 
 
