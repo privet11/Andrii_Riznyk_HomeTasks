@@ -9,7 +9,7 @@ namespace Automation_Home_Project.Tests.HomeTask1_tests
     [Binding]
     public class LinkSharingTest : PagesGet
     {
-        string link;
+        string link = string.Empty;
         string article1;
         string article2;
 

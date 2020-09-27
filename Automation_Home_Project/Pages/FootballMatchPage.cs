@@ -1,4 +1,5 @@
 ﻿using Automation_Home_Project.Assembly;
+using Automation_Home_Project.HomeTask2Patterns;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,17 @@ namespace Automation_Home_Project.Pages
 
         public Score GetScore(string team1, string team2)
         {
+            //if (team1 == firstTeam.Text && team2 == secondTeam.Text)
+            //{
+            //    return new Score { Score1 =Convert.ToByte(firstTeamScore.Text), Score2 = Convert.ToByte(secondTeamScore.Text) };
+            //}
+            //return null;
             if (team1 == firstTeam.Text && team2 == secondTeam.Text)
             {
-                return new Score { Score1 =Convert.ToByte(firstTeamScore.Text), Score2 = Convert.ToByte(secondTeamScore.Text) };
+                Builder builder = new ConcreteBuilder();
+                Director director = new Director(builder);
+                director.BuildFullFeaturedProduct(Convert.ToByte(firstTeamScore.Text), Convert.ToByte(secondTeamScore.Text));
+                return builder.GetScores();
             }
             return null;
         }

@@ -1,4 +1,5 @@
 ﻿using Automation_Home_Project.PageObject;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,8 @@ namespace Automation_Home_Project.Assembly
         public static T GetPages<T>() where T : new()
         {
             var page = new T();
-            PageFactory.InitElements(Driver.WebDriver, page);
             return page;
         }
     }
+
 }

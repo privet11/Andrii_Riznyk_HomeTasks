@@ -20,8 +20,29 @@ namespace Automation_Home_Project.PageObject
             ExplicitWait(10, By.XPath("//a[contains(@class,'share-button')]"));
             shareButton.Click(); 
         }
-        public string Article() => article.Text;
-        public string ShareLink() => shareLink.Text;
+        public string Article()
+        {
+            //while (shareLink.Text == string.Empty)
+            //{
+            //    shareButton.Click();
+            //}
+            return article.Text;
+        }
+
+        public void GoToLink(string link)
+        {
+            //WebDriver.Manage().Timeouts().PageLoad= TimeSpan.FromSeconds(10);
+            WebDriver.Navigate().GoToUrl(link);
+            //WebDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
+        }
+        public string ShareLink()
+        {
+            while (shareLink.Text == string.Empty)
+            {
+                shareButton.Click();
+            }
+            return shareLink.Text; 
+        }
 
 
 

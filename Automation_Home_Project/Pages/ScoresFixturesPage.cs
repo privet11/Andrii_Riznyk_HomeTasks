@@ -1,4 +1,5 @@
 ﻿using Automation_Home_Project.Assembly;
+using Automation_Home_Project.HomeTask2Patterns;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
@@ -12,19 +13,33 @@ namespace Automation_Home_Project.PageObject
 {
     public class ScoresFixturesPage: Driver
     {
-        private IList<IWebElement> championshipMonths = WebDriver.FindElements(By.XPath("//span[contains(@class,'primer-bold')]"));
+        //private readonly IList<IWebElement> championshipMonths = WebDriver.FindElements(By.XPath("//span[contains(@class,'primer-bold')]"));
         private readonly IList<IWebElement> scores = WebDriver.FindElements(By.XPath("//div[contains(@class,'fixture__wrapper')]"));
+        private IWebElement score;
+        private readonly IWebElement months;
 
         private readonly By firstTeam = By.XPath(".//span[contains(@class,'team-name--home')]");
         private readonly By secondTeam = By.XPath(".//span[contains(@class,'team-name--away')]");
         private readonly By firstTeamScore = By.XPath(".//span[contains(@class,'number--home')]");
         private readonly By secondTeamScore = By.XPath(".//span[contains(@class,'number--away')]");
-        
 
+        //span[contains(text(),'AUG')]
         public void ClickOnMonth(string month)
         {
-            championshipMonths = WebDriver.FindElements(By.XPath("//span[contains(@class,'primer-bold')]"));
-            championshipMonths.Where(x => x.Text == month).FirstOrDefault().Click();
+            //championshipMonths = WebDriver.FindElements(By.XPath("//span[contains(@class,'primer-bold')]"));
+            //championshipMonths.Where(x => x.Text == month).FirstOrDefault().Click();
+            //ExplicitWait(10, By.XPath($"//span[contains(text(),'{month}')]"));
+            //WebDriver.FindElement(By.XPath($"//span[contains(text(),'{month}')]")).Click();
+            //WebDriver.Navigate().Back();
+            try
+            {
+                WebDriver.FindElement(By.XPath($"//span[contains(text(),'{month}')]")).Click();
+
+            }
+            catch (StaleElementReferenceException)
+            {
+                WebDriver.FindElement(By.XPath($"//span[contains(text(),'{month}')]")).Click();
+            }
         }
 
         public IEnumerable<string> Scores()
@@ -40,12 +55,13 @@ namespace Automation_Home_Project.PageObject
 
         public Score GetScore(string team1, string team2)
         {
-            return scores.Where(x => x.FindElement(firstTeam).Text == team1 && x.FindElement(secondTeam).Text == team2).
-                          Select(x => new Score
-                          {
-                             Score1 = Convert.ToByte(x.FindElement(firstTeamScore).Text),
-                             Score2 = Convert.ToByte(x.FindElement(secondTeamScore).Text)
-                          }).FirstOrDefault();
+            score = scores.Where(x => x.FindElement(firstTeam).Text == team1 && x.FindElement(secondTeam).Text == team2).FirstOrDefault();
+            Builder builder = new ConcreteBuilder();
+            Director director = new Director(builder);
+            director.BuildFullFeaturedProduct(Convert.ToByte(score.FindElement(firstTeamScore).Text), 
+                                              Convert.ToByte(score.FindElement(secondTeamScore).Text));
+
+            return builder.GetScores();
         }
     }
 

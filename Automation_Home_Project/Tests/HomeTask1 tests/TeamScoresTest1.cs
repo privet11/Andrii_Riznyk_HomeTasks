@@ -1,9 +1,11 @@
 ﻿using Automation_Home_Project.Assembly;
+using Automation_Home_Project.HomeTask2Patterns;
 using Automation_Home_Project.PageObject;
 using Automation_Home_Project.Pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TechTalk.SpecFlow;
+using static Automation_Home_Project.HomeTask2Patterns.Decorator;
 
 namespace Automation_Home_Project.Tests
 {
@@ -17,6 +19,7 @@ namespace Automation_Home_Project.Tests
         string league;
         string month;
         Score score;
+
 
 
         [Given(@"the Home page is open")]
@@ -60,7 +63,9 @@ namespace Automation_Home_Project.Tests
         [When(@"user is'nt logining in")]
         public void WhenUserIsNtLoginingIn()
         {
-            GetPages<SportPage>().SignInExitClick();
+            var simple = new ConcreteComponent();
+            DecoratorWithDisplayChecking decorator = new DecoratorWithDisplayChecking(simple);
+            GetPages<SportPage>().ClientSignInExitClick(decorator);
         }
 
         [When(@"user is navigate to the football page")]
@@ -92,7 +97,10 @@ namespace Automation_Home_Project.Tests
         [Then(@"there must be specified teams with the specified scores")]
         public void ThenThereMustBeSpecifiedTeamsWithTheSpecifiedScores()
         {
-            score = new Score { Score1 = firstScore, Score2 = secondScore };
+            Builder builder = new ConcreteBuilder();
+            Director director = new Director(builder);
+            director.BuildFullFeaturedProduct(firstScore, secondScore);
+            score = builder.GetScores();
             Assert.IsTrue(GetPages<ScoresFixturesPage>().GetScore(firstTeam, secondTeam) == score);
         }
 

@@ -129,9 +129,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assembly\Driver.cs" />
-    <Compile Include="Assembly\MultipleAssert.cs" />
     <Compile Include="Assembly\PagesGet.cs" />
-    <Compile Include="Assembly\ScoreBoard.cs" />
+    <Compile Include="HomeTask2Patterns\Builder.cs" />
+    <Compile Include="HomeTask2Patterns\Decorator.cs" />
+    <Compile Include="HomeTask2Patterns\Singleton.cs" />
     <Compile Include="Pages\EntertainmentArtsPage.cs" />
     <Compile Include="Pages\SpecificNewsPage.cs" />
     <Compile Include="Tests\HomeTask1 tests\TeamScoresTest1.cs" />
@@ -143,7 +144,6 @@
     <Compile Include="Pages\ScoresFixturesPage.cs" />
     <Compile Include="Pages\SearchResultPage.cs" />
     <Compile Include="Pages\SportPage.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
