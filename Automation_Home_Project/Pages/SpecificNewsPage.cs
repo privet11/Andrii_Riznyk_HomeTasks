@@ -20,7 +20,7 @@ namespace Automation_Home_Project.PageObject
             ExplicitWait(10, By.XPath("//a[contains(@class,'share-button')]"));
             shareButton.Click(); 
         }
-<<<<<<< HEAD
+        
         public string Article()
         {
             //while (shareLink.Text == string.Empty)
@@ -36,11 +36,9 @@ namespace Automation_Home_Project.PageObject
             WebDriver.Navigate().GoToUrl(link);
             //WebDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(10);
         }
-        public string ShareLink()
-=======
-        public string Article() => article.Text;
+        
+        
         public string ShareLink() 
->>>>>>> 72656d4dfcafc30ae5f7aec4beb5a4f271e3df2d
         {
             while (shareLink.Text == string.Empty)
             {
@@ -48,13 +46,6 @@ namespace Automation_Home_Project.PageObject
             }
             return shareLink.Text; 
         }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 72656d4dfcafc30ae5f7aec4beb5a4f271e3df2d
-
-
 
     }
 }
